@@ -1,0 +1,15 @@
+<div class="product-card">
+    <div class="header">
+        <h1> {{ title }} </h1>
+        <strong class="product-price"> {{ price }} </strong>
+    </div>
+
+    <h3> Description : </h3>
+    <p> "{{ description }}" </p>
+
+    <img [src]="imageUrl" />
+    <div>
+        
+        <button mat-button  (click)="sendSelected()"> {{!selected ? "Ajouter": "Supprimer" }}</button>
+    </div>
+</div>

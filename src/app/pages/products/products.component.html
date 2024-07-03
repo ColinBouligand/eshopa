@@ -1,8 +1,16 @@
-<div class="product-container">
-  {{ nbSelectedProducts }}
-
-  <app-item-line (selectedEvent)="receiveSelected($event)" />
-  <app-item-line (selectedEvent)="receiveSelected($event)" />
-  <app-item-line (selectedEvent)="receiveSelected($event)" />
-  <app-item-line (selectedEvent)="receiveSelected($event)" />
+<div
+  class="container"
+  fxLayout
+  fxLayoutAlign="center"
+  fxLayoutGap="10px"
+  fxLayoutGap.xs="0"
+>
+  <app-item-line
+    fxFlex="30%"
+    *ngFor="let product of products"
+    (selectedEvent)="receiveSelected($event)"
+    [imageUrl]="product.thumb"
+    [title]="product.title"
+    [price]="product.normalPrice"
+  />
 </div>

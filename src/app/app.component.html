@@ -4,9 +4,11 @@
   <button [routerLink]="['/products']" mat-fab-button >
     <mat-icon>home</mat-icon>
   </button>
+
   <button [routerLink]="['/basket']" mat-fab-button>
     <mat-icon>shopping-cart</mat-icon>
+     {{ nbSelectedProducts}}
   </button>
 </mat-toolbar>
 
-<router-outlet/>
+<router-outlet (activate)="onActivate($event)" />

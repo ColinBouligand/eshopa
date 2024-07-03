@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Product } from '../product-card/product-card.component';
 
@@ -12,21 +12,12 @@ import { Product } from '../product-card/product-card.component';
 })
 
 export class ItemLineComponent {
-  id!:string;
-  title!: string;
-  price!: string;
-  description!: string;
-  imageUrl!: string;
-  isSelected!: boolean;
-
-  ngOnInit(): void {
-    this.id = '1';
-    this.title = 'Prince of Persia';
-    this.price = '99.99$';
-    this.description = 'Pas mal ce jeu';
-    this.imageUrl = 'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg';
-    this.isSelected = false;
-  }
+  @Input() id!:string;
+  @Input() title!: string;
+  @Input() price!: string;
+  @Input() description!: string;
+  @Input() imageUrl!: string;
+  @Input() isSelected!: boolean;
 
   @Output() selectedEvent = new EventEmitter<Product>();
 

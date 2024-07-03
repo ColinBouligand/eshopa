@@ -1,21 +1,12 @@
 <mat-toolbar>
-  <button mat-fab class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Eshopa</span>
+  <h1>Eshopa</h1>
   <span class="spacer"></span>
-  <button mat-fab class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
+  <button [routerLink]="['/products']" mat-fab-button >
+    <mat-icon>home</mat-icon>
   </button>
-  <button mat-fab-button class="example-icon" aria-label="Example icon-button with shopping-cart icon">
+  <button [routerLink]="['/basket']" mat-fab-button>
     <mat-icon>shopping-cart</mat-icon>
   </button>
-  {{ nbSelectedProducts }}
 </mat-toolbar>
 
-<div class="product-container">
-  <app-product-card (selectedEvent)="receiveSelected($event)"></app-product-card>
-  <app-product-card (selectedEvent)="receiveSelected($event)"></app-product-card>
-  <app-product-card (selectedEvent)="receiveSelected($event)"></app-product-card>
-  <app-product-card (selectedEvent)="receiveSelected($event)"></app-product-card>
-</div>
+<router-outlet/>

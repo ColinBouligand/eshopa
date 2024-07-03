@@ -10,6 +10,6 @@
     <img [src]="imageUrl" />
     <div>
         
-        <button mat-button  (click)="sendSelected()"> {{!selected ? "Ajouter": "Supprimer" }}</button>
+        <button mat-button [ngClass]="{'mat-primary': isSelected, 'mat-accent': !isSelected}" (click)="sendSelected()"> {{!isSelected ? "Ajouter": "Supprimer" }}</button>
     </div>
 </div>

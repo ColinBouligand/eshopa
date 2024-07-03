@@ -1,6 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { MatButton } from '@angular/material/button';
-import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 export interface Product {
   id: string,
@@ -11,7 +11,7 @@ export interface Product {
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [MatButton],
+  imports: [MatButtonModule, CommonModule],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })
@@ -21,7 +21,7 @@ export class ProductCardComponent {
   price!: string;
   description!: string;
   imageUrl!: string;
-  selected!: boolean;
+  isSelected!: boolean;
 
   ngOnInit(): void {
     this.id = '1';
@@ -29,13 +29,13 @@ export class ProductCardComponent {
     this.price = '99.99$';
     this.description = 'Pas mal ce jeu';
     this.imageUrl = 'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg';
-    this.selected = false;
+    this.isSelected = false;
   }
 
   @Output() selectedEvent = new EventEmitter<Product>();
 
   sendSelected() {
-    this.selected = !this.selected;
-    this.selectedEvent.emit({ id:this.id, price:this.price, selected:this.selected });
+    this.isSelected = !this.isSelected;
+    this.selectedEvent.emit({ id:this.id, price:this.price, selected:this.isSelected });
   }
 }

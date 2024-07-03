@@ -1,27 +1,24 @@
-import { Component } from '@angular/core';
-import { Product, ProductCardComponent } from './product-card/product-card.component';
-import { MatToolbar } from '@angular/material/toolbar';
-import { MatButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
+import { Component, importProvidersFrom } from '@angular/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {  MatIconModule } from '@angular/material/icon';
+import { RouterModule, RouterOutlet, provideRouter } from '@angular/router';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { routes } from './app.routes';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ProductCardComponent, MatToolbar, MatButton, MatIcon],
+  imports: [MatToolbarModule, MatIconModule,MatButtonModule, RouterOutlet, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  nbSelectedProducts = 0;
-  lastSelectedProduct?: Product = undefined
-
-  receiveSelected(product: Product) {
-    this.lastSelectedProduct = product;
-    if (product.selected) {
-      this.nbSelectedProducts++
-    }
-    else {
-      this.nbSelectedProducts--
-    }
-  }
 }
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes),
+    importProvidersFrom(RouterModule.forRoot(routes))
+  ]
+});

@@ -1,0 +1,19 @@
+<div
+  class="container"
+  fxLayout="row wrap"
+  fxLayoutAlign="center"
+  fxLayoutGap="10px"
+  fxLayoutGap.xs="0"
+>
+  <app-item-card
+    fxFlex="30"
+    fxFlex.xs="100"
+    *ngFor="let product of products"
+    (selectedEvent)="toggleSelection($event)"
+    [imageUrl]="product.thumb"
+    [title]="product.title"
+    [id]="product.gameID"
+    [price]="product.normalPrice"
+  ></app-item-card>
+</div>
+

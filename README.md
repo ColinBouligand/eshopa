@@ -1,27 +1,25 @@
 # Eshopa
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
+This project is composed by a frontend and a backend, respectively written in typescript and javascript
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To deploy this project, you will need node & npm at a recent version (node >= 20 & npm >= 10)
 
-## Code scaffolding
+## Get project from git
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You can clone this project from git using `git clone https://github.com/ColinBouligand/eshopa.git`
 
-## Build
+## Backend server
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `node server.js` to start the backend server (from ./eshopa/backend). Accessible at `http://localhost:3000/`. 
 
-## Running unit tests
+## Frontend server
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng serve` to start the frontend server (from ./eshopa/frontend). Navigate to `http://localhost:4200/`. 
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+If you need any help, you can contact me by email at colinbouligand@yahoo.com.
+
+NB : This project has been made in a total of ~10 15h by a complete beginner in angular that wanted to try this famous framework, hope you enjoy using it !

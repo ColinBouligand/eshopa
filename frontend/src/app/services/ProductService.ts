@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, tap } from 'rxjs';
+import { Product } from '../components/item-card/item-card.component';
 
 export interface ProductAPI {
   title: any;
@@ -29,12 +30,56 @@ export interface ProductAPI {
 export class ProductService {
   private apiUrl = 'http://localhost:3000/api/products';
 
+  private allProducts: ProductAPI[] = [];
+
+  private selectedProducts: Product[] = [];
+  private unselectedProducts: Product[] = [];
+
+  private productsSubject = new BehaviorSubject<Product[]>(
+    this.selectedProducts
+  );
+  selectedProducts$ = this.productsSubject.asObservable();
+
+
+  private unselectedProductsSubject = new BehaviorSubject<Product[]>(
+    this.unselectedProducts
+  );
+  unselectedProducts$ = this.unselectedProductsSubject.asObservable();
+
+
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<ProductAPI[]> {
-    const products = this.http.get<ProductAPI[]>(this.apiUrl);
-    console.log(products);
+  loadProducts() {
+    return this.http.get<ProductAPI[]>(this.apiUrl).pipe(
+      tap((data: ProductAPI[]) => {
+        this.allProducts = data;
+      })
+    );
+  }
 
-    return products;
+  get products(): ProductAPI[] {
+    return this.allProducts;
+  }
+
+  get nbSelectedProducts(): number {
+    return this.selectedProducts.length
+  }
+
+  addProduct(product: Product) {
+    this.selectedProducts.push(product);
+    this.productsSubject.next(this.selectedProducts);
+  }
+
+  removeProduct(product: Product) {
+    this.selectedProducts = this.selectedProducts.filter(
+      (p) => p.id !== product.id
+    );
+    this.unselectedProducts.push(product)
+    this.productsSubject.next(this.selectedProducts);
+  }
+
+  clearBasket() {
+    this.selectedProducts = [];
+    this.productsSubject.next(this.selectedProducts);
   }
 }

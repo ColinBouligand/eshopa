@@ -5,7 +5,8 @@ import { RouterModule, RouterOutlet, provideRouter } from '@angular/router';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { routes } from './app.routes';
 import { MatButtonModule } from '@angular/material/button';
-import { Product } from './components/product-card/product-card.component';
+import { ProductService } from './services/ProductService';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-root',
@@ -16,29 +17,16 @@ import { Product } from './components/product-card/product-card.component';
     MatButtonModule,
     RouterOutlet,
     RouterModule,
+    FontAwesomeModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  nbSelectedProducts = 0;
-  lastSelectedProduct?: Product = undefined;
+  constructor(public productService: ProductService) {}
 
-  onActivate(event: any) {
-    if (event.productSelectedEvent) {
-      event.productSelectedEvent.subscribe((product: Product) => {
-        this.productSelectedEvent(product);
-      });
-    }
-  }
-
-  productSelectedEvent(product: Product) {
-    this.lastSelectedProduct = product;
-    if (product.selected) {
-      this.nbSelectedProducts++;
-    } else {
-      this.nbSelectedProducts--;
-    }
+  ngOnInit(): void {
+    this.productService.loadProducts().subscribe();
   }
 }
 

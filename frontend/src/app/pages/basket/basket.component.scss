@@ -1,0 +1,55 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; // equivalent to fxLayoutGap="20px"
+
+  .list-container {
+    position: relative; // Ensure positioning context for absolute icon
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    width: calc(50% - 20px); // 50% width with gap of 20px
+    max-width: 400px; // optional: limit max-width for responsiveness
+    background-color: #1e1e2f;
+    color: #ffeb3b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+    mat-icon {
+      position: absolute;
+      top: 10px; // Adjust icon's distance from top
+      left: 10px; // Adjust icon's distance from left
+      font-size: 1rem; // adjust icon size as needed
+      color: #ffeb3b; // icon color
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    span {
+      margin-left: 5px;
+    }
+  }
+}

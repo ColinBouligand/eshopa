@@ -1,0 +1,16 @@
+<div class="product-card">
+    <div class="header">
+      <p>{{ title }}</p>
+      <strong class="product-price">{{ price }}€  </strong>
+    </div>
+    <img [src]="imageUrl" />
+    <div class="description">
+      <p>{{ description || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }}</p>
+    </div>
+    <div class="button-container">
+      <button mat-raised-button [ngClass]="{'mat-primary': isSelected, 'mat-accent': !isSelected}" (click)="sendSelected()">
+        {{!isSelected ? "Ajouter au panier": "Supprimer"}}
+      </button>
+    </div>
+  </div>
+  

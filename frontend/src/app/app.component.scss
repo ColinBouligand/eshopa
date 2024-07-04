@@ -1,3 +1,48 @@
-.spacer {
-    flex: 1 1 auto;
+.gaming-toolbar {
+  background-color: #1e1e2f;
+  color: #ffeb3b;
+  font-family: 'Press Start 2P', cursive;
+  height: 64px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  margin-bottom: 32px;
+
+  display: flex;
+  align-items: center;
+}
+
+.gaming-toolbar h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 0 16px;
+  text-shadow: 2px 2px #673ab7;
+}
+
+.gaming-toolbar .spacer {
+  flex: 1 1 auto;
+}
+
+.gaming-toolbar .icon-button {
+  background: none;
+  border: none;
+  color: #ffeb3b;
+  margin: 0 8px;
+  box-shadow: none;
+  padding: 8px;
+  transition: transform 0.3s;
+
+  i {
+    font-size: 24px;
   }
+
+  &:hover {
+    transform: translateY(-2px);
+    color: #fff176;
+  }
+}
+#nb-products{
+  font-size:11px;
+}

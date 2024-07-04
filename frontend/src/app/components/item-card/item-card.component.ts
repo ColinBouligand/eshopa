@@ -1,18 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { Product } from '../product-card/product-card.component';
+
+export interface Product {
+  id: string;
+  title: string;
+  price: string;
+  selected: boolean;
+}
 
 @Component({
-  selector: 'app-item-line',
+  selector: 'app-item-card',
   standalone: true,
   imports: [MatButtonModule, CommonModule],
-  templateUrl: './item-line.component.html',
-  styleUrl: './item-line.component.scss'
+  templateUrl: './item-card.component.html',
+  styleUrl: './item-card.component.scss',
 })
-
-export class ItemLineComponent {
-  @Input() id!:string;
+export class ItemCardComponent {
+  @Input() id!: string;
   @Input() title!: string;
   @Input() price!: string;
   @Input() description!: string;
@@ -23,6 +28,11 @@ export class ItemLineComponent {
 
   sendSelected() {
     this.isSelected = !this.isSelected;
-    this.selectedEvent.emit({ id:this.id, price:this.price, selected:this.isSelected });
+    this.selectedEvent.emit({
+      id: this.id,
+      title: this.title,
+      price: this.price,
+      selected: this.isSelected,
+    });
   }
 }

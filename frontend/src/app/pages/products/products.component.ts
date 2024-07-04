@@ -1,33 +1,61 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Product } from '../../components/product-card/product-card.component';
-import { ItemLineComponent } from '../../components/item-line/item-line.component';
+import { Component, OnInit } from '@angular/core';
+import {
+  ItemCardComponent,
+  Product,
+} from '../../components/item-card/item-card.component';
 import { ProductAPI, ProductService } from '../../services/ProductService';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ItemLineComponent, CommonModule],
+  imports: [ItemCardComponent, CommonModule, FlexLayoutModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements OnInit {
-  @Output() productSelectedEvent = new EventEmitter<Product>();
+  constructor(private productService: ProductService) {}
 
   products: ProductAPI[] = [];
 
-  constructor(private productService: ProductService) {}
+  selectedProducts: Product[] = [];
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((data: ProductAPI[]) => {
-      this.products = data;
+
+    this.productService.selectedProducts$.subscribe((selectedProducts) => {
+      console.log(selectedProducts)
+      this.selectedProducts = selectedProducts;
     });
+    this.productService.loadProducts().subscribe(() => {
+      this.products = mergeProductAttributes(
+        this.productService.products,
+        this.selectedProducts
+      );
+    });
+
+   
   }
 
-  nbSelectedProducts = 0;
-  lastSelectedProduct?: Product = undefined;
-
-  receiveSelected(product: Product) {
-    this.productSelectedEvent.emit(product);
+  toggleSelection(product: Product) {
+    if (product.selected) {
+      this.productService.addProduct(product);
+    } else {
+      this.productService.removeProduct(product);
+    }
   }
+}
+
+function mergeProductAttributes(
+  products: ProductAPI[],
+  selectedProducts: Product[]
+): ProductAPI[] {
+  const selectedMap = new Map(
+    selectedProducts.map((item) => [item.id, item.selected])
+  );
+
+  return products.map((product) => ({
+    ...product,
+    selected: selectedMap.get(product.gameID) || false,
+  }));
 }

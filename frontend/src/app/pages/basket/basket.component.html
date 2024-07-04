@@ -1,1 +1,40 @@
-<p>basket works!</p>
+<div class="button-container" fxLayout="row wrap" fxLayoutAlign="center">
+  <button mat-raised-button mat-primary (click)="resetBasket()">
+    {{ "Réinitialiser le panier" }}
+  </button>
+</div>
+
+<div
+  class="container"
+  fxLayout="row wrap"
+  fxLayoutAlign="center"
+  fxLayoutGap="20px"
+  fxLayoutGap.xs="0"
+>
+  <div class="list-container" fxFlex="45">
+    <span
+      ><mat-icon>shopping_cart</mat-icon> Panier actuel :
+      {{ selectedProducts.length }}</span
+    >
+    <li>
+      <ul *ngFor="let product of selectedProducts">
+        <strong>{{ product.title }} </strong>
+        <span>- {{ product.price }}</span>
+      </ul>
+    </li>
+  </div>
+
+  <div class="list-container" fxFlex="45">
+    <div>
+      <mat-icon>close</mat-icon> Articles supprimés :
+      {{ unselectedProducts.length }}
+    </div>
+
+    <li>
+      <ul *ngFor="let product of unselectedProducts">
+        <strong>{{ product.title }} </strong>
+        <span>- {{ product.price }}</span>
+      </ul>
+    </li>
+  </div>
+</div>

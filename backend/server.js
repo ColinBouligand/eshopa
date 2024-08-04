@@ -19,6 +19,36 @@ app.get("/api/products", async (_req, res) => {
   }
 });
 
+let cart = [];
+
+// Endpoint to get products (mock data for now)
+app.get('/api/products', (req, res) => {
+  const products = [
+    { id: 1, name: 'Product 1', price: 100 },
+    { id: 2, name: 'Product 2', price: 200 }
+  ];
+  res.json(products);
+});
+
+// Add to cart
+app.post('/api/cart', (req, res) => {
+  const { productId } = req.body;
+  cart.push(productId);
+  res.json({ message: 'Product added to cart' });
+});
+
+// Remove from cart
+app.delete('/api/cart/:productId', (req, res) => {
+  const { productId } = req.params;
+  cart = cart.filter(id => id !== parseInt(productId));
+  res.json({ message: 'Product removed from cart' });
+});
+
+// Get cart items
+app.get('/api/cart', (req, res) => {
+  res.json(cart);
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

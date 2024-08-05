@@ -1,8 +1,7 @@
 <template>
   <v-container>
-    <h2>Card</h2>
     <v-list>
-      <v-list-item v-for="item in cartItems" :key="item" :title="item">
+      <v-list-item v-for="item in products" :key="item" :title="item">
         <v-list-item-action>
           <v-btn @click="removeFromCart(item)">Remove</v-btn>
         </v-list-item-action>
@@ -12,29 +11,20 @@
 </template>
 
 <script>
+
+import { useProductStore } from '@/stores/products';
 export default {
   data() {
     return {
-      cartItems: []
+      products: []
     };
   },
-  created() {
-    this.fetchCartItems();
-  },
+  computed: {
+    productStore: () => useProductStore()
+  }, 
   methods: {
-    fetchCartItems() {
-      fetch('http://localhost:3000/api/cart')
-        .then(response => response.json())
-        .then(data => {
-          this.cartItems = data;
-        });
-    },
-    removeFromCart(productId) {
-      fetch(`http://localhost:3000/api/cart/${productId}`, {
-        method: 'DELETE'
-      }).then(() => {
-        this.fetchCartItems();
-      });
+    deleteProduct(productId) {
+      productStore.deleteProduct(productId)
     }
   }
 };

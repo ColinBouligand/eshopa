@@ -3,7 +3,7 @@
     <v-row>
       <v-col v-for="product in products" :key="product.id" cols="12" md="4">
         <v-card>
-          <v-card-title>{{ product.name }}</v-card-title>
+          <v-card-title>{{ product.title }}</v-card-title>
           <v-card-subtitle>${{ product.price }}</v-card-subtitle>
           <v-card-actions>
             <v-btn @click="addToCart(product.id)">Add to Cart</v-btn>
@@ -15,32 +15,24 @@
 </template>
 
 <script>
+import { useProductStore } from '@/stores/products';
+
 export default {
-  data() {
+  setup() {
+    // Access the product store within the setup function
+    const productStore = useProductStore();
+
+    // Fetch products when component is mounted
+    //productStore.fetchProducts();
+
     return {
-      products: []
+      // Expose the products state from the store
+      products: productStore.getProducts,
+
+      // Expose actions from the store
+      addToCart: productStore.addProduct,
     };
   },
-  created() {
-    this.fetchProducts();
-  },
-  methods: {
-    fetchProducts() {
-      fetch('http://localhost:3000/api/products')
-        .then(response => response.json())
-        .then(data => {
-          this.products = data;
-        });
-    },
-    addToCart(productId) {
-      fetch('http://localhost:3000/api/cart', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ productId })
-      });
-    }
-  }
 };
 </script>
+

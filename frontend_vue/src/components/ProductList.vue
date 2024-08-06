@@ -4,9 +4,9 @@
       <v-col v-for="product in products" :key="product.id" cols="12" md="4">
         <v-card>
           <v-card-title>{{ product.title }}</v-card-title>
-          <v-card-subtitle>${{ product.price }}</v-card-subtitle>
+          <v-card-subtitle>${{ product.normalPrice }}</v-card-subtitle>
           <v-card-actions>
-            <v-btn @click="addToCart(product.id)">Add to Cart</v-btn>
+            <v-btn @click="addToCart(product)" icon="basket">{{ $t('card.add') }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

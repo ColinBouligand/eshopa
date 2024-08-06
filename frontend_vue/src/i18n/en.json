@@ -1,0 +1,15 @@
+{
+  "header": {
+    "name": "eshopa",
+    "home": "home",
+    "products": "products",
+    "search": "Search a product"
+  },
+  "footer": {
+    "about": "about",
+    "contact": "contact us"
+  },
+  "card": {
+    "add": "Add"
+  }
+}

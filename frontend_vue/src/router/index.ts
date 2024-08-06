@@ -16,7 +16,7 @@ const fetchProductsGuard: NavigationGuard = async (
     next()
   } catch (error) {
     console.error('[Guard] Failed to fetch products:', error)
-    next()// Still go to the products page
+    next() // Still go to the products page
   }
 }
 
@@ -26,13 +26,23 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
-      beforeEnter: [fetchProductsGuard]
+      component: HomeView
+    },
+    {
+      path: '/products',
+      name: 'products',
+      component: () => import('../views/ProductsView.vue'), // Lazy loading
+      beforeEnter: [fetchProductsGuard] // Guard to load data before entering view
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('../views/AboutView.vue'),
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/ContactView.vue')
     }
   ]
 })

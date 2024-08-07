@@ -12,6 +12,7 @@ interface ProductState {
   loading: boolean
 }
 
+
 export const useProductStore = defineStore('product', {
   state: (): ProductState => {
     return { products: [], loading: false }
@@ -35,7 +36,12 @@ export const useProductStore = defineStore('product', {
       if (this.loading) return
       try {
         this.loading = true
-        this.products = await fetchProducts()
+        const res = await fetchProducts()
+        this.products = res.map((product) => ({
+          id: product.storeID,
+          title: product.title,
+          price: product.normalPrice
+        }))
       } catch (error) {
         console.error('Failed to fetch products:', error)
       } finally {

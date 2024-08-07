@@ -7,11 +7,19 @@
     "search": "Chercher un produit"
   },
   "footer": {
-    "about": "à propos",
-    "contact": "contacts"
+    "about": "A propos",
+    "contact": "Contacts"
   },
   "home": {},
   "card": {
     "add": "Ajouter"
+  },
+  "basket":{
+      "title": "Votre panier",
+      "articles": "articles",
+      "empty": "Votre panier est vide, veuillez sélectionner au moins 1 article",
+      "removed": "Articles supprimés",
+      "cguv": "J'accepte les CGUV d'Eshopa",
+      "buy": "Procéder au paiement"
   }
 }

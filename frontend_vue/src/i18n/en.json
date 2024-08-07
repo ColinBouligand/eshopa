@@ -6,10 +6,18 @@
     "search": "Search a product"
   },
   "footer": {
-    "about": "about",
-    "contact": "contact us"
+    "about": "About",
+    "contact": "Contact us"
   },
   "card": {
     "add": "Add"
+  },
+  "basket": {
+    "title": "Your basket",
+    "articles": "articles",
+    "empty": "Your basket is currently empty, please select at least 1 article",
+    "removed": "Removed articles",
+    "cguv": "I accept Eshopa GCUV",
+    "buy": "Go to payment"
   }
 }

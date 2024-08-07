@@ -15,8 +15,8 @@
         <!-- Navigation Links -->
         <v-col cols="12" md="6">
           <v-row justify="center">
-            <v-btn text class="mx-2" to="/">{{ $t('header.home') }}</v-btn>
-            <v-btn text class="mx-2" to="/products">{{ $t('header.products') }}</v-btn>
+            <v-btn rounded text class="mx-2" to="/">{{ $t('header.home') }}</v-btn>
+            <v-btn rounded text class="mx-2" to="/products">{{ $t('header.products') }}</v-btn>
           </v-row>
         </v-col>
 
@@ -33,7 +33,7 @@
               class="mr-4"
             />
             <locale-select class="mx-2" />
-            <v-btn icon>
+            <v-btn icon to="/basket">
               <v-badge :content="basketLength" color="secondary" overlap>
                 <v-icon icon="mdi-cart" color="white"></v-icon>
               </v-badge>
@@ -62,7 +62,7 @@ export default {
     // Computed property to check if the current route is /products
     const isProductsPage = computed(() => route.path === '/products')
 
-    const basketLength = basketStore.getProducts.length
+    const basketLength = computed(() => basketStore.getBasketLength)
 
     return { isProductsPage, basketLength }
   }

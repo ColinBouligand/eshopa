@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, NavigationGuard, RouteLocation } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import { useProductStore } from '@/stores/products'
+import ProductsView from '@/views/ProductsView.vue'
 
 // Guards
 
@@ -31,8 +32,18 @@ const router = createRouter({
     {
       path: '/products',
       name: 'products',
-      component: () => import('../views/ProductsView.vue'), // Lazy loading
+      component: ProductsView, 
       beforeEnter: [fetchProductsGuard] // Guard to load data before entering view
+    },
+    {
+      path: '/basket',
+      name: 'basket',
+      component: () => import('../views/BasketView.vue') // Lazy loading
+    },
+    {
+      path: '/payment',
+      name: 'payment',
+      component: () => import('../views/PaymentView.vue') // Lazy loading
     },
     {
       path: '/about',

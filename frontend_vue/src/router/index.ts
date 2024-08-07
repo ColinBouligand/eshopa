@@ -2,6 +2,8 @@ import { createRouter, createWebHistory, NavigationGuard, RouteLocation } from '
 import HomeView from '../views/HomeView.vue'
 import { useProductStore } from '@/stores/products'
 import ProductsView from '@/views/ProductsView.vue'
+import PurchasesView from '@/views/PurchasesView.vue'
+import { useBasketStore } from '@/stores/basket'
 
 // Guards
 
@@ -21,6 +23,22 @@ const fetchProductsGuard: NavigationGuard = async (
   }
 }
 
+const fetchPurchasesGuard: NavigationGuard = async (
+  _to: RouteLocation,
+  _from: RouteLocation,
+  next: any
+) => {
+  const basketStore = useBasketStore()
+
+  try {
+    await basketStore.fetchPurchases()
+    next()
+  } catch (error) {
+    console.error('[Guard] Failed to fetch purchases:', error)
+    next()
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -32,7 +50,7 @@ const router = createRouter({
     {
       path: '/products',
       name: 'products',
-      component: ProductsView, 
+      component: ProductsView,
       beforeEnter: [fetchProductsGuard] // Guard to load data before entering view
     },
     {
@@ -44,6 +62,12 @@ const router = createRouter({
       path: '/payment',
       name: 'payment',
       component: () => import('../views/PaymentView.vue') // Lazy loading
+    },
+    {
+      path: '/purchases',
+      name: 'purchases',
+      component: PurchasesView,
+      beforeEnter: [fetchPurchasesGuard] // Guard to load data before entering view
     },
     {
       path: '/about',

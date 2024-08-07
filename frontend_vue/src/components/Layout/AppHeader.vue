@@ -1,9 +1,9 @@
 <template>
   <v-app-bar app color="primary" dark>
-    <v-container>
+    <v-container fluid class="mx-4">
       <v-row class="align-center" justify="space-between">
         <!-- Logo -->
-        <v-col cols="12" md="2">
+        <v-col  md="2">
           <v-toolbar-title>
             <router-link to="/" class="white--text text-decoration-none">
               <img src="@/assets/eshopa.png" height="30" />
@@ -13,7 +13,7 @@
         </v-col>
 
         <!-- Navigation Links -->
-        <v-col cols="12" md="6">
+        <v-col  md="6">
           <v-row justify="center">
             <v-btn rounded text class="mx-2" to="/">{{ $t('header.home') }}</v-btn>
             <v-btn rounded text class="mx-2" to="/products">{{ $t('header.products') }}</v-btn>
@@ -21,17 +21,24 @@
         </v-col>
 
         <!-- Search and Cart -->
-        <v-col cols="12" md="4">
+        <v-col  md="4">
           <v-row justify="end" class="align-center">
             <!-- display only if on products page -->
-            <v-text-field
-              v-if="isProductsPage"
-              dense
-              hide-details
-              prepend-inner-icon="mdi-magnify"
-              :placeholder="$t('header.search')"
-              class="mr-4"
-            />
+            <v-tooltip :text="$t('header.searchBarTooltip')">
+              <template v-slot:activator="{ props }">
+                <v-text-field
+                  v-bind="props"
+                  v-if="isProductsPage"
+                  dense
+                  hide-details
+                  prepend-inner-icon="mdi-magnify"
+                  :placeholder="$t('header.search')"
+                  class="mr-4"
+                  disabled
+                />
+              </template>
+            </v-tooltip>
+
             <locale-select class="mx-2" />
             <v-btn icon to="/basket">
               <v-badge :content="basketLength" color="secondary" overlap>

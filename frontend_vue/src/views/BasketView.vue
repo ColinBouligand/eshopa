@@ -3,7 +3,7 @@
     <h2>{{ $t('basket.title') }}</h2>
     <!-- FILLED BASKET -->
     <v-row>
-      <v-col cols="12" lg="8" class="ma-4" v-if="basketLength > 0">
+      <v-col cols="12" lg="7" class="ma-4" v-if="basketLength > 0">
         <template v-for="(product, index) in selectedProducts" :key="index">
           <div class="my-2 d-flex justify-space-between">
             <div>
@@ -31,7 +31,7 @@
           <strong>Total : {{ parseFloat(totalPrice).toFixed(2) }} $</strong>
         </div>
       </v-col>
-      <v-col cols="12" lg="3">
+      <v-col cols="12" lg="4">
         <!-- OPTIONNAL : REMOVED PRODUCTS FROM BASKET-->
         <v-expansion-panels
           v-if="removedProducts.length > 0"
@@ -61,7 +61,7 @@
     <h4>{{ $t('basket.empty') }}</h4>
   </div>
 
-  <div class="d-flex flex-column align-center">
+  <div class="d-flex flex-column align-center justify-end">
     <v-checkbox :label="$t('basket.cguv')" v-model="isCGUV" :disabled="basketLength == 0" />
     <action-button
       :text="$t('basket.buy')"
@@ -77,9 +77,9 @@
 <script lang="ts">
 import ActionButton from '@/components/ActionButton.vue'
 import { useBasketStore } from '@/stores/basket'
-import { computed, defineComponent, ref } from 'vue'
+import { computed, ref } from 'vue'
 
-export default defineComponent({
+export default {
   components: { ActionButton },
   setup() {
     const basketStore = useBasketStore()
@@ -108,5 +108,5 @@ export default defineComponent({
       isCGUV
     }
   }
-})
+}
 </script>

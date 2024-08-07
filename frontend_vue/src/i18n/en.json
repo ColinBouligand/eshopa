@@ -3,14 +3,20 @@
     "name": "eshopa",
     "home": "home",
     "products": "products",
-    "search": "Search a product"
+    "search": "Search a product",
+    "searchBarTooltip": "Coming soon !"
   },
   "footer": {
     "about": "About",
     "contact": "Contact us"
   },
+  "home": {
+    "message": "This page is still under construction, come back later, there will be new features !",
+    "button": "Check our products !"
+  },
   "card": {
-    "add": "Add"
+    "add": "Add",
+    "alert": "Product added to basket"
   },
   "basket": {
     "title": "Your basket",
@@ -19,5 +25,23 @@
     "removed": "Removed articles",
     "cguv": "I accept Eshopa GCUV",
     "buy": "Go to payment"
+  },
+  "payment": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "zipCode": "Zip code",
+    "city": "City",
+    "pay": "Proceed to payment",
+    "previous": "Go back"
+  },
+  "purchase": {
+    "title": "Canceled items during its purchase",
+    "canceled": "canceled"
+  },
+  "about": {
+    "content": "This is an about page"
+  },
+  "contact": {
+    "content": "This is a contact page"
   }
 }

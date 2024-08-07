@@ -1,19 +1,28 @@
 import { defineStore } from 'pinia'
 import { Product } from './products'
+import { purchaseBasket, fetchPurchases, PurchaseAPI } from '@/api/purchaseApi'
 
 export interface BasketLine extends Product {
   productCount: number
+}
+
+export interface Purchaser {
+  firstName: string
+  lastName: string
+  zipCode: string
+  city: string
 }
 
 interface BasketState {
   products: Array<BasketLine>
   addedProducts: Array<Product>
   removedProducts: Array<Product>
+  purchases: Array<PurchaseAPI>
 }
 
 export const useBasketStore = defineStore('basket', {
   state: (): BasketState => {
-    return { products: [], addedProducts: [], removedProducts: [] }
+    return { products: [], addedProducts: [], removedProducts: [], purchases: [] }
   },
   getters: {
     getProducts(state: BasketState): Array<Product> {
@@ -24,6 +33,9 @@ export const useBasketStore = defineStore('basket', {
     },
     getRemovedProducts(state: BasketState): Array<Product> {
       return state.removedProducts
+    },
+    getPurchases(state: BasketState): Array<PurchaseAPI> {
+      return state.purchases
     },
     getBasketLength(state: BasketState): number {
       return state.products.reduce((total, product) => total + product.productCount, 0)
@@ -54,14 +66,22 @@ export const useBasketStore = defineStore('basket', {
           // Remove the item at the found index
           this.products.splice(index, 1)
         } else {
-          console.log( this.products[index].productCount)
           this.products[index].productCount--
-          console.log( this.products[index].productCount)
-
         }
 
         // Add the item to removed one
         this.removedProducts.push(productToRemove)
+      }
+    },
+    // Purchases
+    purchaseBasket(purchaser: Purchaser) {
+      purchaseBasket(purchaser, this.products, this.removedProducts)
+    },
+    async fetchPurchases() {
+      try {
+        this.purchases = await fetchPurchases()
+      } catch (error) {
+        console.error('Failed to fetch purchases:', error)
       }
     }
   }

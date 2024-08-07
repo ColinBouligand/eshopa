@@ -1,0 +1,53 @@
+{
+  "purchases": [
+    {
+      "purchaser": {
+        "firstName": "Colin",
+        "lastName": "Bouligand",
+        "zipCode": "15454",
+        "city": "Angers"
+      },
+      "basket": [
+        {
+          "id": "O6TBiDnCiMr2Enl9d45JSnylZdmzpt3SFproKvGC0Rc%3D",
+          "title": "7 Days to Die",
+          "price": "44.99",
+          "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/251570/capsule_sm_120.jpg?t=1721925235",
+          "productCount": 1
+        },
+        {
+          "id": "mVpqPaXnWInKTOPI56uCw8BAiuB4JfozeXW0Cme3bX4%3D",
+          "title": "The Cycling Bundle",
+          "price": "69.99",
+          "thumb": "https://sttc.gamersgate.com/images/product/the-cycling-bundle/cover-180-b73919.jpg",
+          "productCount": 1
+        },
+        {
+          "id": "SHm0PzINklnS4eIOvD0CankOkmwvURXkm45xmNaB9iY%3D",
+          "title": "Back 4 Blood: Ultimate Edition",
+          "price": "99.99",
+          "thumb": "https://sttc.gamersgate.com/images/product/back-4-blood-ultimate-edition/cover-180-91231d.jpg",
+          "productCount": 1
+        }
+      ],
+      "removedProducts": [
+        {
+          "id": "l1C70TiQIufJbgwAI9v6vGTcOUO1oZ9MIXuR11P1Qto%3D",
+          "title": "Back 4 Blood: Deluxe Edition",
+          "price": "89.99",
+          "thumb": "https://sttc.gamersgate.com/images/product/back-4-blood-deluxe-edition/cover-180-267524.jpg",
+          "productCount": 1
+        },
+        {
+          "id": "FxJGIbeyeOrLnV9Y4R%2BZU4S2GRfQV8P2ZzUxekn7szM%3D",
+          "title": "One Punch Man: A Hero Nobody Knows Deluxe Edition",
+          "price": "79.99",
+          "thumb": "https://sttc.gamersgate.com/images/product/one-punch-man-a-hero-nobody-knows-deluxe-edition/cover-180-0c33a4.jpg",
+          "productCount": 1
+        }
+      ],
+      "purchaseId": "7f72f0a2-8670-4467-9da2-d79fb0650225",
+      "purchaseDate": "2024-08-07T15:36:53.859Z"
+    }
+  ]
+}

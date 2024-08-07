@@ -3,23 +3,46 @@
     "name": "eshopa",
     "home": "accueil",
     "products": "produits",
-
-    "search": "Chercher un produit"
+    "search": "Chercher un produit",
+    "searchBarTooltip": "Arrive bientôt !"
   },
   "footer": {
     "about": "A propos",
     "contact": "Contacts"
   },
-  "home": {},
-  "card": {
-    "add": "Ajouter"
+  "home": {
+    "message": "Cette page est en cours de construction, de nouvelles fonctionnalités arrivent bientôt, revenez vite!",
+    "button": "Voir nos produits !"
   },
-  "basket":{
-      "title": "Votre panier",
-      "articles": "articles",
-      "empty": "Votre panier est vide, veuillez sélectionner au moins 1 article",
-      "removed": "Articles supprimés",
-      "cguv": "J'accepte les CGUV d'Eshopa",
-      "buy": "Procéder au paiement"
+  "card": {
+    "add": "Ajouter",
+    "alert": "Produit ajouté au panier"
+
+  },
+  "basket": {
+    "title": "Votre panier",
+    "articles": "articles",
+    "empty": "Votre panier est vide, veuillez sélectionner au moins 1 article",
+    "removed": "Articles supprimés",
+    "cguv": "J'accepte les CGUV d'Eshopa",
+    "buy": "Procéder au paiement"
+  },
+  "payment": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "zipCode": "Code postal",
+    "city": "Ville",
+    "pay": "Procéder au paiement",
+    "previous": "Précédent"
+  },
+  "purchase": {
+    "title": "Articles annulés pendant un achat",
+    "canceled": "a annulé l'achat de"
+  },
+  "about": {
+    "content": "Ceci est une page d'à propos"
+  },
+  "contact": {
+    "content": "Ceci est une page de contact"
   }
 }

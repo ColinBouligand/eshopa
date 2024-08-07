@@ -1,17 +1,17 @@
-import { addProduct, deleteProduct, fetchProducts } from '@/api/productApi'
+import { fetchProducts } from '@/api/productApi'
 import { defineStore } from 'pinia'
 
 export interface Product {
   id: string
   title: string
   price: number
+  thumb: string
 }
 
 interface ProductState {
   products: Array<Product>
   loading: boolean
 }
-
 
 export const useProductStore = defineStore('product', {
   state: (): ProductState => {
@@ -26,21 +26,16 @@ export const useProductStore = defineStore('product', {
     }
   },
   actions: {
-    addProduct(product: Product) {
-      addProduct(product)
-    },
-    deleteProduct(productId: string) {
-      deleteProduct(productId)
-    },
     async fetchProducts() {
-      if (this.loading) return
+      if (this.loading || this.products.length > 0) return
       try {
         this.loading = true
         const res = await fetchProducts()
         this.products = res.map((product) => ({
-          id: product.storeID,
+          id: product.dealID,
           title: product.title,
-          price: product.normalPrice
+          price: product.normalPrice,
+          thumb: product.thumb
         }))
       } catch (error) {
         console.error('Failed to fetch products:', error)

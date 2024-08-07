@@ -1,12 +1,14 @@
 <template>
   <v-app>
-    <AppHeader />
-    <v-main class="full-width">
-      <v-container fluid class="mt-16">
-        <router-view />
-      </v-container>
-    </v-main>
-    <AppFooter />
+    <div class="app-container">
+      <AppHeader />
+      <v-main class="full-width">
+        <v-container fluid >
+          <router-view />
+        </v-container>
+      </v-main>
+      <AppFooter />
+    </div>
   </v-app>
 </template>
 
@@ -24,12 +26,26 @@ export default {
 </script>
 
 <style scoped>
-.full-width {
-  padding: 0;
-  margin: 0;
-  min-height: calc(
-    100vh + 100px
-  );
-  width: 100vw; /* Ensure full viewport width */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container takes up the full viewport height */
+  width:100vw;  
+}
+
+.main-content {
+  flex: 1; /* This makes the main content area grow and take available space */
+}
+
+.content-container {
+  padding: 16px;
+}
+
+/* Optional: Style the footer to ensure it doesn’t overflow */
+.v-footer {
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  padding: 10px 0;
 }
 </style>

@@ -27,7 +27,7 @@
 import { useBasketStore } from '@/stores/basket'
 import { useProductStore } from '@/stores/products'
 import ActionButton from './ActionButton.vue'
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 
 export default {
   components: { ActionButton },
